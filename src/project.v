@@ -37,7 +37,7 @@ module tt_um_dlmiles_ringosc_5inv (
 `ifdef COCOTB_SIM
       assign #1 ring[n+1] = ~ring[n];
 `else
-      (* keep, syn_keep, dont_touch *) sg13g2_inv_1 inv (
+      (* keep, syn_keep *) sg13g2_inv_1 inv_notouch_ (
         .Y    (ring[n+1]),
         .A    (ring[n])
       );
@@ -73,7 +73,7 @@ module tt_um_dlmiles_ringosc_5inv (
       assign dff_qn_d [d]     = qn[d];
       assign dff_q_clk[d + 1] = q[d];
 `else
-      (* keep, syn_keep, dont_touch *) sg13g2_dfrbp_1 div (
+      (* keep, syn_keep *) sg13g2_dfrbp_1 div_notouch_ (
         .RESET_B  (rst_n),
         .CLK      (dff_q_clk[d]),
         .D        (dff_qn_d [d]),
